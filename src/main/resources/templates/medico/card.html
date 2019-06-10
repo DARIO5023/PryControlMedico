@@ -3,24 +3,130 @@
 <head th:replace="layout :: head"></head>
 <body>
 	<header th:replace="layout :: header"></header>
-	
 	<div class="container">
 		<br />
 		<div class="card col-md-12">
 			<div class="card-body">
 				<div class="form-group row">
 					<div class="content col-sm-1">
-						<i class="far fa-plus-square fa-2x"></i>
+						<i class="fas fa-user-md fa-3x"></i>
 					</div>
-					<h3 class="card-title col-sm-6" th:text="${title}"></h3>
-					<div class="col-sm-4"></div>
+					<h3 class="card-title col-sm-6"
+						th:text="${medico.nombre}"></h3>
+					<div class="col-sm-4">
+						<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+						<i class="fas fa-trash-alt"></i>&nbsp;Eliminar</button>
+						<a class="btn btn-primary" th:href="@{/medico/list}"><i
+							class="fas fa-arrow-left"></i>&nbsp;Volver</a>
+					</div>
 				</div>
+				<input type="hidden" id="idpersona"
+					th:value="${medico.idpersona}" />
 				<hr />
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group row">
+							<div class="content col-sm-3 bg-light">
+								<i class="fas fa-id-card"></i>
+								<label class="h5 col-form-label">&nbsp;C&eacute;dula:</label>
+							</div>
+							<div class="col-sm-8">
+								<h5 class="card-text" th:text="${medico.cedula}"></h5>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="content col-sm-3 bg-light">
+								<i class="fas fa-user-md"></i>
+								<label class="h5 col-form-label">&nbsp;Nombres:</label>
+							</div>
+							<div class="col-sm-8">
+								<h5 class="card-text" th:text="${medico.nombre}"></h5>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="content col-sm-3 bg-light">
+								<i class="fas far fa-address-card"></i>
+								<label class="h5 col-form-label">&nbsp;Apellidos:</label>
+							</div>
+							<div class="col-sm-8">
+								<h5 class="card-text" th:text="${medico.apellido}"></h5>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="content col-sm-3 bg-light">
+								<i class="fas fa-calendar-alt"></i>
+								<label class="h5 col-form-label">&nbsp;Fecha de Nacimiento:</label>
+							</div>
+							<div class="col-sm-8">
+								<h5 class="card-text"
+									th:text="${medico.nacimiento}"></h5>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="content col-sm-3 bg-light">
+								<i class="fas fa-phone"></i>
+								<label class="h5 col-form-label">&nbsp;Tel&eacute;fono:</label>
+							</div>
+							<div class="col-sm-8">
+								<h5 class="card-text"
+									th:text="${medico.telefono}"></h5>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="content col-sm-3 bg-light">
+								<i class="fas fa-at"></i> 
+								<label class="h5 col-form-label">&nbsp;Email:</label>
+							</div>
+							<div class="col-sm-8">
+								<h5 class="card-text"
+									th:text="${medico.email}"></h5>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="content col-sm-3 bg-light">
+								<i class="fas fa-id-badge"></i>
+								<label class="h5 col-form-label">&nbsp;Licencia:</label>
+							</div>
+							<div class="col-sm-8">
+								<h5 class="card-text"
+									th:text="${medico.licencia}"></h5>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="content col-sm-3 bg-light">
+								<i class="fas fa-stethoscope"></i>
+								<label class="h5 col-form-label">&nbsp;Especialidad:</label>
+							</div>
+							<div class="col-sm-8">
+								<h5 class="card-text"
+									th:text="${medico.especialidad}"></h5>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="deleteModal" class="modal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¿Desea eliminar al M&eacute;dico?</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p th:text=${medico.nombre}></p>
+					</div>
+					<div class="modal-footer">						
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+						<a th:href="@{/medico/delete/} + ${medico.idpersona}" class="btn btn-success">Confirmar</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	
-				
 	<footer th:replace="layout :: footer"></footer>
 </body>
 </html>

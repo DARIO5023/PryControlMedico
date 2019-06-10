@@ -122,6 +122,7 @@ public abstract class Persona {
 		this.email = email;
 	}
 
+	//Pac llama a esto
 	@Override
 	public String toString() {
 		return nombre + " " + apellido;

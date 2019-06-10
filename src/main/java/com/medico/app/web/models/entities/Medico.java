@@ -24,6 +24,7 @@ public class Medico extends Persona implements Serializable{
 
 	@Size(max = 255)
 	@Column(name = "ESPECIALIDAD")
+	@NotEmpty
 	private String especialidad;
 	
 	@OneToMany(mappedBy="medico", fetch=FetchType.LAZY)//LAZY, trae los valores de los atributos y no todo el listado 
